@@ -48,10 +48,14 @@ public class CollectionTestSuite {
         normalArrayList.add(1991);
         normalArrayList.add(2222);
         ArrayList<Integer> oddNumberList = new ArrayList<>();
+        oddNumberList.add(2);
+        oddNumberList.add(4);
+        oddNumberList.add(2222);
         //when
         ArrayList<Integer> normalListResult = oddNumbersExterminator.exterminate(normalArrayList);
+
         System.out.println("Testing list with numbers");
         //then
-        Assert.assertEquals(normalListResult,oddNumberList);
+        Assert.assertEquals(normalArrayList,normalListResult);
     }
 }

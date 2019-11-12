@@ -17,7 +17,7 @@ public class ShapeCollectorTestSuite {
         Assert.assertEquals(1, shapeCollector.showFigure());
     }
 
-    @org.junit.jupiter.api.Test
+    @Test
     public void testRemoveFigure() {
         //given
         Shape square = new Square(5);
