@@ -112,7 +112,7 @@ public class ForumStatisticsTestSuite {
         //Then
         assertEquals(0, forumStatistics.getUsersQuantity(), 0.01);
         assertEquals(0, forumStatistics.getAveragePostPerUser(), 0.01);
-        assertEquals(0, forumStatistics.getAverageCommentsPerUser());
+        assertEquals(0, forumStatistics.getAverageCommentsPerUser(), 0.01);
 
     }
 
