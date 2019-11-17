@@ -1,5 +1,6 @@
 package com.kodilla.testing.library;
 
+import org.junit.Before;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -9,6 +10,8 @@ import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.*;
 
 public class BookDirectoryTestSuite {
+    private LibraryDatabase libraryDatabaseMock;
+    private BookLibrary bookLibrary;
 
     private List<Book> generateListOfNBooks(int booksQuantity) {
         List<Book> resultList = new ArrayList<Book>();
@@ -17,6 +20,12 @@ public class BookDirectoryTestSuite {
             resultList.add(theBook);
         }
         return resultList;
+    }
+
+    @Before
+    public void before(){
+        libraryDatabaseMock = mock(LibraryDatabase.class);
+        bookLibrary = new BookLibrary(libraryDatabaseMock);
     }
 
     @Test

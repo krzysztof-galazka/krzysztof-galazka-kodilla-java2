@@ -1,5 +1,4 @@
 package com.kodilla.testing.forum.statistics;
-
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -129,8 +128,8 @@ public class ForumStatisticsTestSuite {
         forumStatistics.calculateAdvStatistics(statisticsMock);
         //Then
         assertEquals(100, forumStatistics.getUsersQuantity(), 0.01);
-        assertEquals(10, forumStatistics.getAveragePostPerUser(), 0.01);
-        assertEquals(0.1, forumStatistics.getAverageCommentsPerUser(), 0.01);
+        assertEquals(0.2, forumStatistics.getAveragePostPerUser(), 0.01);
+        assertEquals(0.4, forumStatistics.getAverageCommentsPerUser(), 0.01);
     }
 
 }
