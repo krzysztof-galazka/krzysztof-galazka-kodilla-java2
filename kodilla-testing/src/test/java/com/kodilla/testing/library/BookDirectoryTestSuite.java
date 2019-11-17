@@ -12,6 +12,7 @@ import static org.mockito.Mockito.*;
 public class BookDirectoryTestSuite {
     private LibraryDatabase libraryDatabaseMock;
     private BookLibrary bookLibrary;
+    LibraryUser libraryUser = new LibraryUser("Krzysztof", "Jarzyna", "91090909090");
 
     private List<Book> generateListOfNBooks(int booksQuantity) {
         List<Book> resultList = new ArrayList<Book>();
@@ -92,7 +93,44 @@ public class BookDirectoryTestSuite {
         // Then
         assertEquals(0, theListOfBooks10.size(), 0.01);
         verify(libraryDatabaseMock, times(0)).listBooksWithCondition(anyString());
+    }
 
+    @Test
+    public void testListBooksOfNoneRentBooks(){
+
+        //Given
+        List<Book> listOFNoneBook = new ArrayList<>();
+        when(libraryDatabaseMock.listBooksInHandsOf(any(LibraryUser.class))).thenReturn(listOFNoneBook);
+        List<Book> listOfBorrowedBooks = new ArrayList<>();
+        when(libraryDatabaseMock.listBooksInHandsOf(libraryUser)).thenReturn(listOfBorrowedBooks);
+        //When
+        List<Book> listOfNoneRentBooks = bookLibrary.listBooksInHandsOf(libraryUser);
+        //Then
+        assertEquals(0,listOfNoneRentBooks.size());
+    }
+
+    @Test
+    public void testListBooksOfOneRentBook(){
+        //Given
+        List<Book> listWhenOneBookIsRent = generateListOfNBooks(1);
+        when(libraryDatabaseMock.listBooksInHandsOf(libraryUser)).thenReturn(listWhenOneBookIsRent);
+        //When
+        List<Book> listOfOneRentBook = bookLibrary.listBooksInHandsOf(libraryUser);
+        //Then
+        assertEquals(1,listOfOneRentBook.size());
+        assertEquals(listWhenOneBookIsRent, listWhenOneBookIsRent);
+    }
+
+    @Test
+    public void testListBooksOfFiveRentBook(){
+        //Given
+        List<Book> listWhenFiveBookIsRent = generateListOfNBooks(5);
+        when(libraryDatabaseMock.listBooksInHandsOf(libraryUser)).thenReturn(listWhenFiveBookIsRent);
+        //When
+        List<Book> listOfFiveRentBook = bookLibrary.listBooksInHandsOf(libraryUser);
+        //Then
+        assertEquals(5,listOfFiveRentBook.size());
+        assertEquals(listWhenFiveBookIsRent, listWhenFiveBookIsRent);
     }
 
 }
