@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
-import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.*;
 
 public class BookDirectoryTestSuite {
@@ -40,7 +39,7 @@ public class BookDirectoryTestSuite {
         List<Book> theListOfBooks = bookLibrary.listBooksWithCondition("Secret");
 
         // Then
-        assertEquals(4, theListOfBooks.size());
+        assertEquals(4, theListOfBooks.size(), 0.01);
     }
 
     @Test
@@ -63,9 +62,9 @@ public class BookDirectoryTestSuite {
         List<Book> theListOfBooks40 = bookLibrary.listBooksWithCondition("FortyBooks");
         // Then
 
-        assertEquals(0, theListOfBooks0.size());
-        assertEquals(15, theListOfBooks15.size());
-        assertEquals(0, theListOfBooks40.size());
+        assertEquals(0, theListOfBooks0.size(), 0.01);
+        assertEquals(15, theListOfBooks15.size(), 0.01);
+        assertEquals(0, theListOfBooks40.size(), 0.01);
     }
 
 
@@ -82,7 +81,7 @@ public class BookDirectoryTestSuite {
         List<Book> theListOfBooks10 = bookLibrary.listBooksWithCondition("An");
 
         // Then
-        assertEquals(0, theListOfBooks10.size());
+        assertEquals(0, theListOfBooks10.size(), 0.01);
         verify(libraryDatabaseMock, times(0)).listBooksWithCondition(anyString());
 
     }
