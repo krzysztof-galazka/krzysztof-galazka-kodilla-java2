@@ -52,8 +52,8 @@ public class ForumStatisticsTestSuite {
         forumStatistics.calculateAdvStatistics(statisticsMock);
         //Then
         assertEquals(1000, forumStatistics.getPostsQuantity(), 0.01);
-        assertEquals(0, forumStatistics.getAveragePostPerUser(), 0.01);
-        assertEquals(0, forumStatistics.getAverageCommentsPerPost(), 0.01);
+        assertEquals(100, forumStatistics.getAveragePostPerUser(), 0.01);
+        assertEquals(0.04, forumStatistics.getAverageCommentsPerPost(), 0.01);
     }
 
     //gdy liczba komentarzy = 0
