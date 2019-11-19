@@ -4,17 +4,19 @@ import com.kodilla.stream.world.Continent;
 import com.kodilla.stream.world.Country;
 import com.kodilla.stream.world.World;
 import org.junit.Assert;
-import org.junit.Before;
 import org.junit.Test;
 
 import java.math.BigDecimal;
 
 public class WorldTestSuite {
 
-    private World world;
 
-    @Before
-    public void create(){
+
+    @Test
+    public void testGetPeopleQuantity(){
+
+        World world = new World();
+
         Country poland = new Country("Poland", new BigDecimal(38536869));
         Country germany = new Country("Germany", new BigDecimal(82422299));
 
@@ -38,19 +40,14 @@ public class WorldTestSuite {
         africa.addCountryToConinentList(morocco);
         africa.addCountryToConinentList(egypt);
 
-        World world = new World();
 
         world.addContinentToWorldList(europa);
         world.addContinentToWorldList(asia);
         world.addContinentToWorldList(africa);
 
-    }
 
-    @Test
-    public void testGetPeopleQuantity(){
         //sum of people = 1 611 718 829
 
-        create();
         Assert.assertEquals(new BigDecimal(1611718829), world.getPeopleQuantity());
 
     }
